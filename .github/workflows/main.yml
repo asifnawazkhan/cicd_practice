@@ -1,0 +1,19 @@
+name: My First CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: action/checkout@v4
+    - name: my first step
+     runs: |
+      echo "this is Asif khan"
+      uname -a
+      
+      
+      
