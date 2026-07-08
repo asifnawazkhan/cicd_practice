@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: myfirst step
-        run: echo "my first step"
+        run: echo "my first step ${{vars.mykey}}"
  
   test:
     runs-on: ubuntu-22.04
@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: test
-        run: echo "this is test case"
+        run: echo "this is test case ${{secrets.mykey_sec}}"
       
   deploy:
    runs-on: ubuntu-latest
