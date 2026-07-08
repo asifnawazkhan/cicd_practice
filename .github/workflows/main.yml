@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: test
-      run: echo "this is test case"
+        run: echo "this is test case"
   
   deploy:
    runs-on: ubuntu-latest
    steps:
     - name: deploy
-     run: echo "this is deploy stage"
+      run: echo "this is deploy stage"
      
           
