@@ -1,9 +1,11 @@
 name: cicd practice
 
 on: push
+
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout the code repo
-        uses: actions\checkout@v4
+ deploy:
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Checkout the code repo
+     uses: actions/checkout@v4
