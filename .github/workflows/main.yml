@@ -15,3 +15,8 @@ jobs:
        aws-access-key-id: ${{secrets.ACCESS_KEY_ID}}
        aws-secret-access-key: ${{secrets.ACCESS_KEY_SECRET}}
        aws-region: us-east-1
+   - name: deploy static website to s3 bucket 
+     run: |
+        aws s3 sync ./ s3://firstbucketstatic30/ \
+        --exclude "*" \
+        --include "index.html"
