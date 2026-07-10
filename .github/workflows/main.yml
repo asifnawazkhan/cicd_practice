@@ -5,25 +5,15 @@ on:
      branches: main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: myfirst step
-        run: echo "my first step ${{vars.mykey}}"
- 
-  test:
-    runs-on: ubuntu-22.04
-    needs: build
-
-    steps:
-      - name: test
-        run: echo "this is test case ${{secrets.mykey_sec}}"
-      
-  deploy:
-   runs-on: ubuntu-latest
-   needs: test
-   steps:
-    - name: deploy
-      run: echo "this is deploy stage"
+      - name: checkout repo
+        uses: actions/checkout@v7
+      - name: configure aws credential
+        uses: aws-actions/configure-aws-credentials@v6.1.0
+        with:
+          aws-access-key-id: ${{secrets.ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.ACCESS_KEY_SECRET}}
      
           
