@@ -1,22 +1,25 @@
 name: cicd practice
 
-on: push
-
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+       description: choaice the eniviroment to deploy
+       required: true
+       type: choice 
+       default: dev
+       options:
+          - dev
+          - test
+      artifact_tag:
+       description: choice the tag
+       required: true
+       
 jobs:
  deploy:
   runs-on: ubuntu-latest
 
   steps:
-   - name: Checkout the code repo
-     uses: actions/checkout@v4
-   - name: configure aws credential
-     uses: aws-actions/configure-aws-credentials@v6.1.0
-     with:
-       aws-access-key-id: ${{secrets.ACCESS_KEY_ID}}
-       aws-secret-access-key: ${{secrets.ACCESS_KEY_SECRET}}
-       aws-region: us-east-1
-   - name: deploy static website to s3 bucket 
-     run: |
-        aws s3 sync ./ s3://firstbucketstatic30/ \
-        --exclude "*" \
-        --include "index.html"
+   - name: deploy the app
+     run : echo "depoly the app ${{inputs.environment }}
+
