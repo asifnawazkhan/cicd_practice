@@ -6,3 +6,5 @@ jobs:
     steps:
       - name: first context variable
         run: echo "this is my first ${{toJson(github)}}"
+      - name: shah variable background
+        run: echo "$GITHUB_SHA"
