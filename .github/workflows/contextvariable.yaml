@@ -1,0 +1,8 @@
+name: context variable
+on: push
+jobs:
+  context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first context variable
+        run: echo "this is my first ${{toJson(github)}}"
