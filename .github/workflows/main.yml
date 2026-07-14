@@ -21,5 +21,7 @@ jobs:
 
   steps:
    - name: deploy the app
-     run : echo "depoly the app ${{inputs.environment }}
+     run: echo "depoly the app ${{ inputs.environment }}"
+   - name: artificate
+     run: echo "The artificate ${{ inputs.artifact_tag}}"
 
