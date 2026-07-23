@@ -7,19 +7,19 @@ on:
          - main
 jobs:
     quality_check:
-        if: github.event.ref=='feature' && github.event_name=='push'
+        if: github.ref_name=='feature' && github.event_name=='push'
         runs-on: ubuntu-latest
         steps:
             - name: run quality
               run: echo "run quality check code of feature branch"
     dev_deploy:
-        if: github.event.ref=='develope' && github.event_name=='push'
+        if: github.ref_name=='develope' && github.event_name=='push'
         runs-on: ubuntu-latest
         steps:
             - name: development branch
               run: echo "run development branch code"
     production_deploy:
-        if: github.event.ref=='main' && github.event_name=='push'
+        if: github.ref_name=='main' && github.event_name=='push'
         runs-on: ubuntu-latest
         steps:
             - name: production deploy main branch
