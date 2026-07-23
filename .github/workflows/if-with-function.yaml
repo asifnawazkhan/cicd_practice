@@ -1,0 +1,34 @@
+name: if_example
+on:
+    push:
+        branches:
+         - feature
+         - develope
+         - main
+jobs:
+    quality_check:
+        if: github.event.ref=='feature' && github.event_name=='push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: run quality
+              run: echo "run quality check code of feature branch"
+    dev_deploy:
+        if: github.event.ref=='develope' && github.event_name=='push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: development branch
+              run: echo "run development branch code"
+    production_deploy:
+        if: github.event.ref=='main' && github.event_name=='push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: production deploy main branch
+              run: echo "run main branch"
+    success_notify:
+        if: always() && !failure()
+        runs-on: ubuntu-latest
+        steps:
+            - name: success notify
+              run: echo "success notification run "
+
+        
